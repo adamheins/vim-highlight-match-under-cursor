@@ -1,4 +1,4 @@
-# Highlight Match Under Cursor
+# Vim: Highlight Match Under Cursor
 
 A simple vim and neovim plugin that does what the title says: highlights the
 match currently under the cursor with a unique colour to differentiate it from

@@ -19,8 +19,9 @@ function! HighlightMatchUnderCursor()
     let g:HighlightMatchUnderCursor#match_id = -1
   endif
 
-  " Don't do highlighting when highlight search is off.
-  if !v:hlsearch
+  " Don't do highlighting when highlight search is off or search register is
+  " empty.
+  if !v:hlsearch || strlen(@/) ==# 0
     return
   endif
 
@@ -46,14 +47,11 @@ function! HighlightMatchUnderCursor()
 
   " Only do the match if the cursor is actually over top of the search string
   " (i.e., between the start and end of the match).
-  if l:match_lnum_start ==# l:cursor_lnum
-        \ && l:cursor_col >= l:match_col_start
-        \ && l:cursor_col <= l:match_col_end
+  if l:match_lnum_start ==# l:cursor_lnum && l:cursor_col >= l:match_col_start && l:cursor_col <= l:match_col_end
     let l:match_len = l:match_col_end - l:match_col_start + 1
     " Priority level 11 is chosen to be higher-priority than the default value
     " of 10.
-    let g:HighlightMatchUnderCursor#match_id = matchaddpos('CurrentSearchWord',
-          \ [[l:match_lnum_start, l:match_col_start, l:match_len]], 11)
+    let g:HighlightMatchUnderCursor#match_id = matchaddpos('CurrentSearchWord', [[l:match_lnum_start, l:match_col_start, l:match_len]], 11)
   endif
 endfunction
 
