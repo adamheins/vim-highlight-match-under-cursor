@@ -34,4 +34,4 @@ cterm=NONE'`. I personally like to set this to be the same as `:hi IncSearch`.
 
 ## License
 
-MIT---see the LICENSE file.
+MIT&mdash;see the LICENSE file.
