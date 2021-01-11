@@ -8,8 +8,8 @@ let g:HighlightMatchUnderCursor#loaded = 1
 
 let g:HighlightMatchUnderCursor#match_id = -1
 
-if !exists('g:HighlightMatchUnderCursor#match_bg')
-  let g:HighlightMatchUnderCursor#match_bg = 88
+if !exists('g:HighlightMatchUnderCursor#highlight_args')
+  let g:HighlightMatchUnderCursor#highlight_args = 'ctermbg=88 cterm=NONE'
 endif
 
 function! HighlightMatchUnderCursor()
@@ -57,6 +57,6 @@ function! HighlightMatchUnderCursor()
   endif
 endfunction
 
-exe 'highlight CurrentSearchWord ctermbg=' . g:HighlightMatchUnderCursor#match_bg . ' cterm=NONE'
+exe 'highlight CurrentSearchWord ' . g:HighlightMatchUnderCursor#highlight_args
 
 autocmd CursorMoved * call HighlightMatchUnderCursor()
