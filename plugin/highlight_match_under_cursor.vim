@@ -1,21 +1,22 @@
-" Highlight the current search word under the cursor.
+" Highlight the match under the cursor with a specific colour to stand out
+" from the other search-highlighted matches.
 
-if exists('g:MatchCurrentSearchWord#loaded')
+if exists('g:HighlightMatchUnderCursor#loaded')
   finish
 endif
-let g:MatchCurrentSearchWord#loaded = 1
+let g:HighlightMatchUnderCursor#loaded = 1
 
-let g:MatchCurrentSearchWord#match_id = -1
+let g:HighlightMatchUnderCursor#match_id = -1
 
-if !exists('g:MatchCurrentSearchWord#match_bg')
-  let g:MatchCurrentSearchWord#match_bg = 88
+if !exists('g:HighlightMatchUnderCursor#match_bg')
+  let g:HighlightMatchUnderCursor#match_bg = 88
 endif
 
-function! MatchCurrentSearchWord()
+function! HighlightMatchUnderCursor()
   " Remove the old match, if it exists.
-  if g:MatchCurrentSearchWord#match_id > 0
-    silent! call matchdelete(g:MatchCurrentSearchWord#match_id)
-    let g:MatchCurrentSearchWord#match_id = -1
+  if g:HighlightMatchUnderCursor#match_id > 0
+    silent! call matchdelete(g:HighlightMatchUnderCursor#match_id)
+    let g:HighlightMatchUnderCursor#match_id = -1
   endif
 
   " Don't do highlighting when highlight search is off.
@@ -51,11 +52,11 @@ function! MatchCurrentSearchWord()
     let l:match_len = l:match_col_end - l:match_col_start + 1
     " Priority level 11 is chosen to be higher-priority than the default value
     " of 10.
-    let g:MatchCurrentSearchWord#match_id = matchaddpos('CurrentSearchWord',
+    let g:HighlightMatchUnderCursor#match_id = matchaddpos('CurrentSearchWord',
           \ [[l:match_lnum_start, l:match_col_start, l:match_len]], 11)
   endif
 endfunction
 
-exe 'highlight CurrentSearchWord ctermbg=' . g:MatchCurrentSearchWord#match_bg . ' cterm=NONE'
+exe 'highlight CurrentSearchWord ctermbg=' . g:HighlightMatchUnderCursor#match_bg . ' cterm=NONE'
 
-autocmd CursorMoved * call MatchCurrentSearchWord()
+autocmd CursorMoved * call HighlightMatchUnderCursor()
