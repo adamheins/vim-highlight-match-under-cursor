@@ -7,6 +7,13 @@ identify the current match when quickly jumping amongst many.
 
 Todo: example GIF
 
+The highlighting is updating whenever the cursor is moved, and only appears
+when search highlighting is active (i.e., when `v:hlsearch` is true). If you
+want to clear the highlight without moving the cursor, you can use
+```
+:call HighlightMatchUnderCursor#matchdelete()
+```
+
 ## Installation
 
 Can be installed with the vim plugin manager of your choice. For example, if
@@ -14,17 +21,12 @@ you use `plug`, add
 ```
 Plug 'https://github.com/adamheins/vim-highlight-match-under-cursor'
 ```
-to your `.vimrc` or `init.vim`.
-
-The plugin is just a [single
-script](https://raw.githubusercontent.com/adamheins/vim-highlight-match-under-cursor/master/plugin/highlight_match_under_cursor.vim),
-so you can also install it without a plugin manager by simply downloading and
-placing that script in your vim `plugin/` directory.
+to your `.vimrc` (vim) or `init.vim` (neovim).
 
 ## Configuration
 
-You can change the background highlight colour for the match under the cursor
-by setting the variable
+You can change the highlight style for the match under the cursor by setting
+the variable
 ```
 g:HighlightMatchUnderCursor#highlight_args
 ```

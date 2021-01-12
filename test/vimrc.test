@@ -1,0 +1,3 @@
+" Minimal vimrc to test the plugin. From the command line, run
+"   vim -u vimrc.test
+set hlsearch

@@ -1,23 +1,21 @@
-" Highlight the match under the cursor with a specific colour to stand out
-" from the other search-highlighted matches.
+" highlight-match-under-cursor: highlight the match under the cursor with a
+" specific colour to stand out from the other search-highlighted matches.
+"
+" Author: Adam Heins <mail@adamheins.com>
+" Source: https://github.com/vim-highlight-match-under-cursor
 
-if exists('g:HighlightMatchUnderCursor#loaded')
-  finish
-endif
-let g:HighlightMatchUnderCursor#loaded = 1
 
-let g:HighlightMatchUnderCursor#match_id = -1
-
-if !exists('g:HighlightMatchUnderCursor#highlight_args')
-  let g:HighlightMatchUnderCursor#highlight_args = 'ctermbg=88 cterm=NONE'
-endif
-
-function! HighlightMatchUnderCursor()
+function! HighlightMatchUnderCursor#matchdelete() abort
   " Remove the old match, if it exists.
-  if g:HighlightMatchUnderCursor#match_id > 0
-    silent! call matchdelete(g:HighlightMatchUnderCursor#match_id)
-    let g:HighlightMatchUnderCursor#match_id = -1
+  if g:HighlightMatchUnderCursor_match_id > 0
+    silent! call matchdelete(g:HighlightMatchUnderCursor_match_id)
+    let g:HighlightMatchUnderCursor_match_id = -1
   endif
+endfunction
+
+
+function! HighlightMatchUnderCursor#matchadd() abort
+  call HighlightMatchUnderCursor#matchdelete()
 
   " Don't do highlighting when highlight search is off or search register is
   " empty.
@@ -51,10 +49,11 @@ function! HighlightMatchUnderCursor()
     let l:match_len = l:match_col_end - l:match_col_start + 1
     " Priority level 11 is chosen to be higher-priority than the default value
     " of 10.
-    let g:HighlightMatchUnderCursor#match_id = matchaddpos('CurrentSearchWord', [[l:match_lnum_start, l:match_col_start, l:match_len]], 11)
+    let g:HighlightMatchUnderCursor_match_id = matchaddpos('CurrentSearchWord', [[l:match_lnum_start, l:match_col_start, l:match_len]], 11)
   endif
 endfunction
 
-exe 'highlight CurrentSearchWord ' . g:HighlightMatchUnderCursor#highlight_args
 
-autocmd CursorMoved * call HighlightMatchUnderCursor()
+function! HighlightMatchUnderCursor#highlight() abort
+  exe 'highlight CurrentSearchWord ' . g:HighlightMatchUnderCursor_highlight_args
+endfunction
