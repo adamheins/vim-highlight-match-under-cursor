@@ -2,8 +2,9 @@
 
 A simple vim and neovim plugin that does what the title says: highlights the
 match currently under the cursor with a unique colour to differentiate it from
-all the other search-highlighted matches. This is convenient to quickly
-identify the current match when quickly jumping amongst many.
+all the other search-highlighted matches. This is convenient for easily
+identifying the current match when quickly jumping amongst many. In the GIF
+below, the current match is highlighted in the default red colour.
 
 ![Demo GIF](https://github.com/adamheins/vim-highlight-match-under-cursor/blob/master/demo/demo.gif)
 
