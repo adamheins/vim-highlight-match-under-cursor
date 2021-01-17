@@ -7,7 +7,7 @@ identify the current match when quickly jumping amongst many.
 
 ![Demo GIF](https://github.com/adamheins/vim-highlight-match-under-cursor/blob/master/demo/demo.gif)
 
-The highlighting is updating whenever the cursor is moved, and only appears
+The highlighting is updated whenever the cursor is moved, and only appears
 when search highlighting is active (i.e., when `v:hlsearch` is true). If you
 want to clear the highlight without moving the cursor, you can use
 ```
