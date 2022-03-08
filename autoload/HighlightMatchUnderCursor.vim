@@ -55,5 +55,9 @@ endfunction
 
 
 function! HighlightMatchUnderCursor#highlight() abort
-  exe 'highlight CurrentSearchWord ' . g:HighlightMatchUnderCursor_highlight_args
+  if len(g:HighlightMatchUnderCursor_highlight_link_group) != 0
+    exe 'highlight link CurrentSearchWord ' . g:HighlightMatchUnderCursor_highlight_link_group
+  else
+    exe 'highlight CurrentSearchWord ' . g:HighlightMatchUnderCursor_highlight_args
+  endif
 endfunction
