@@ -25,11 +25,16 @@ to your `.vimrc` (vim) or `init.vim` (neovim).
 You can change the highlight style for the match under the cursor by setting
 the variable
 ```
-g:HighlightMatchUnderCursor#highlight_args
+g:HighlightMatchUnderCursor_highlight_args
 ```
 in your `.vimrc` or `init.vim`, which takes standard highlight arguments as a
 string (see `:h highlight-args`). The default value is `'ctermbg=88
-cterm=NONE'`. I personally like to set this to be the same as `:hi IncSearch`.
+cterm=NONE'`. Alternatively you can set the variable
+```
+g:HighlightMatchUnderCursor_highlight_link_group
+```
+to link the CurrentSearchWord group to a configured highlight group. I
+personally like to set this to be the same as `:hi IncSearch`.
 
 The highlighting is updated whenever the cursor is moved, and only appears
 when search highlighting is active (i.e., when `v:hlsearch` is true). If you

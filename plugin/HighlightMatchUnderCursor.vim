@@ -14,6 +14,9 @@ let g:HighlightMatchUnderCursor_match_id = -1
 let g:HighlightMatchUnderCursor_highlight_args =
       \ get(g:, 'HighlightMatchUnderCursor_highlight_args', 'ctermbg=88 cterm=NONE')
 
+let g:HighlightMatchUnderCursor_highlight_link_group =
+      \ get(g:, 'HighlightMatchUnderCursor_highlight_link_group', '')
+
 augroup HighlightMatchUnderCursor_group
   autocmd!
   autocmd ColorScheme * call HighlightMatchUnderCursor#highlight()
