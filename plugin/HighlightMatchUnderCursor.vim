@@ -12,7 +12,7 @@ let g:HighlightMatchUnderCursor_loaded = 1
 let g:HighlightMatchUnderCursor_match_id = -1
 
 let g:HighlightMatchUnderCursor_highlight_args =
-      \ get(g:, 'HighlightMatchUnderCursor_highlight_args', 'ctermbg=88 cterm=NONE')
+      \ get(g:, 'HighlightMatchUnderCursor_highlight_args', 'guibg=#F92672 guifg=#F8F8F2 ctermbg=88 cterm=NONE')
 
 let g:HighlightMatchUnderCursor_highlight_link_group =
       \ get(g:, 'HighlightMatchUnderCursor_highlight_link_group', '')
