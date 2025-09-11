@@ -1,3 +1,9 @@
+## Deprecation
+
+You should now just use the built-in `CurSearch` highlight group in vim (added
+in patch 8.2.4724) and neovim (added in version 0.9.0), which does the same
+thing as this plugin.
+
 # Vim: Highlight Match Under Cursor
 
 A simple vim and neovim plugin that does what the title says: highlights the
